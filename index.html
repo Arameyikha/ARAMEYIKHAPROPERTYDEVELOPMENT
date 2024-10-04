@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ARAMEYIKHA PROPERTY DEVELOPMENT</title>
+
+    <style>
+
+        * {
+
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+
+        }
+
+        .container {
+
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+
+        }
+
+        header {
+
+            text-align: center;
+            padding: 20px;
+            background: #009688;
+            color: white;
+            border-radius: 10px;
+
+        }
+
+        h1 {
+
+            font-size: 2.5em;
+
+        }
+
+        h2 {
+
+            margin-top: 20px;
+            color: #009688;
+
+        }
+
+        form {
+
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+
+        }
+
+        input, textarea {
+
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+
+        }
+
+        button {
+
+            padding: 10px;
+            background: #009688;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+
+        }
+
+        button:hover {
+
+            background: #00796b;
+
+        }
+
+        @media (max-width: 768px) {
+
+            h1 {
+
+                font-size: 2em;
+
+            }
+
+            h2 {
+
+                font-size: 1.5em;
+
+            }
+
+        }
+
+        @media (max-width: 480px) {
+
+            h1 {
+
+                font-size: 1.8em;
+
+            }
+
+            h2 {
+
+                font-size: 1.2em;
+
+            }
+
+        }
+
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+
+            $('#appointmentForm').on('submit', function(e) {
+
+                e.preventDefault();
+                const formData = $(this).serialize();
+                $.ajax({
+
+                    url: 'https://formspree.io/f/mrbgzebz', // Replace with your Formspree ID
+                    method: 'POST',
+                    data: formData,
+                    success: function() {
+
+                        alert('Appointment booked successfully!');
+                        $('#appointmentForm')[0].reset();
+
+                    },
+
+                    error: function() {
+
+                        alert('There was an error booking your appointment. Please try again.');
+
+                    }
+
+                });
+
+            });
+
+            $('#inquiryForm').on('submit', function(e) {
+
+                e.preventDefault();
+                const inquiryData = $(this).serialize();
+                $.ajax({
+
+                    url: 'https://formspree.io/f/mrbgzebz', // Replace with your Formspree ID
+                    method: 'POST',
+                    data: inquiryData,
+                    success: function() {
+
+                        alert('Inquiry sent successfully!');
+                        $('#inquiryForm')[0].reset();
+
+                    },
+
+                    error: function() {
+
+                        alert('There was an error sending your inquiry. Please try again.');
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <h1>ARAMEYIKHA</h1>
+
+            <p>Your trusted partner in property development.</p>
+
+        </header>
+
+        <section id="appointment">
+
+            <h2>BOOK AN APPOINTMENT WITH US</h2>
+
+            <form id="appointmentForm">
+
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <textarea name="address" placeholder="Address" required></textarea>
+                <input type="date" name="date" required>
+                <input type="time" name="time" required>
+                <button type="submit">Book Appointment</button>
+
+            </form>
+
+        </section>
+
+        <section id="inquiry">
+
+            <h2>Send an Inquiry</h2>
+
+            <form id="inquiryForm">
+
+                <input type="text" name="inquiryName" placeholder="Full Name" required>
+                <input type="email" name="inquiryEmail" placeholder="Email" required>
+                <textarea name="inquiryMessage" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Inquiry</button>
+
+            </form>
+
+        </section>
+
+    </div>
+
+</body>
+
+</html>
+
+
